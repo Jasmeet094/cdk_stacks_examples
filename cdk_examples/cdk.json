@@ -1,0 +1,3041 @@
+{
+  "app": "python3 app.py",
+  "watch": {
+    "include": [
+      "**"
+    ],
+    "exclude": [
+      "README.md",
+      "cdk*.json",
+      "requirements*.txt",
+      "source.bat",
+      "**/__init__.py",
+      "python/__pycache__",
+      "tests"
+    ]
+  },
+  "context": {
+    "@aws-cdk/aws-apigateway:usagePlanKeyOrderInsensitiveId": true,
+    "@aws-cdk/core:stackRelativeExports": true,
+    "@aws-cdk/aws-rds:lowercaseDbIdentifier": true,
+    "@aws-cdk/aws-lambda:recognizeVersionProps": true,
+    "@aws-cdk/aws-lambda:recognizeLayerVersion": true,
+    "@aws-cdk/aws-cloudfront:defaultSecurityPolicyTLSv1.2_2021": true,
+    "@aws-cdk-containers/ecs-service-extensions:enableDefaultLogDriver": true,
+    "@aws-cdk/aws-ec2:uniqueImdsv2TemplateName": true,
+    "@aws-cdk/core:checkSecretUsage": false,
+    "@aws-cdk/aws-iam:minimizePolicies": true,
+    "@aws-cdk/core:validateSnapshotRemovalPolicy": true,
+    "@aws-cdk/aws-codepipeline:crossAccountKeyAliasStackSafeResourceName": true,
+    "@aws-cdk/aws-s3:createDefaultLoggingPolicy": true,
+    "@aws-cdk/aws-sns-subscriptions:restrictSqsDescryption": true,
+    "@aws-cdk/core:target-partitions": [
+      "aws",
+      "aws-cn"
+    ],
+    "test-master": {
+      "id": "330157172028",
+      "superuser_role_arn": "arn:aws:iam::330157172028:role/master-superuser-role",
+      "region": "us-east-1",
+      "cidr": "10.0.0.0/16",
+      "hostedZone": "test.com",
+      "hostedZoneId": "Z0602246HMFQ4VL3QN0W",
+      "route53Role": "arn:aws:iam::330157172028:role/route53_cross_account",
+      "cross_account_peering":{
+        "cross_account_ids": [],
+        "cross_account_vpc_cidr":[]
+      },
+      "static_website_buckets":[
+        {
+        "bucket_name": "help1.test.com",
+        "host_name": "support.test.com"
+        }
+      ],
+      "iam_users_group": {
+          "billing_group":[
+            "xiao.zhang",
+            "christian.grover"
+          ]
+      }
+    },
+    "test-dev": {
+        "id": "806606111087",
+        "region": "us-east-1",
+        "cidr": "10.11.0.0/16",
+        "vpc_id": "vpc-0c159c2b193341c24",
+        "hostedZone": "test-dev.com",
+        "email": "devops@test.com",
+        "kmsKeyId": "mrk-d161996472414c8f8bd2866d4596840d",
+        "hostedZoneId": "Z09621252T500QOPOQDEW",
+        "route53Role": "arn:aws:iam::330157172028:role/route53_cross_account",
+        "wildcard_acm_arn": "arn:aws:acm:us-east-1:806606111087:certificate/346934cc-c721-4d28-890e-9723d84fb50c",
+        "peering_connection_ids": {},
+        "cross_account_peering":{
+          "cross_account_ids": [
+            "329042822701"
+          ],
+          "cross_account_vpc_cidr":[]
+        },
+        "public_subnet_cidrs": [
+          "10.11.0.0/24",
+          "10.11.1.0/24",
+          "10.11.2.0/24"
+        ],
+        "private_subnet_cidrs": [
+          "10.11.3.0/24",
+          "10.11.4.0/24",
+          "10.11.5.0/24"
+        ],
+        "test_domains": ["*.test-dev.com"],
+        "route_table_ids":[
+          "rtb-08fd2dfc75664484d",
+          "rtb-07acec14433c81be3",
+          "rtb-07ee5e61cfee9d555",
+          "rtb-06fcc3d98fcff1229",
+          "rtb-01e8d72461bd73dec",
+          "rtb-0b534639ef0a79ac0"
+        ],
+        "dotnet_ec2":{
+          "sg_inbound_ip": [],
+          "instance_type": "t2.micro",
+          "pem_key": "test-dev",
+          "image_id": "ami-0c7217cdde317cfec",
+          "cis_image_id": "ami-0cd6bed5677703650",
+          "s3_arn": [
+            "codepipeline-us-east-1-675426632558",
+            "test-ng-test-dev-ng-806606111087",
+            "codepipeline-artifacts-bucket-test-codebuildtest-dev"
+          ],
+          "private_ip": "10.11.3.10"
+        },
+        "ecs_config":{
+          "desired_count": 1
+        },
+        "certificates": [
+          "arn:aws:acm:us-east-1:806606111087:certificate/346934cc-c721-4d28-890e-9723d84fb50c"
+        ],
+        "v1_stacks": {
+          "vpc_id": "vpc-0c19f518d24883f3f",
+          "cidr": "10.1.0.0/16",
+          "legacy_route_table_ids": [
+            "rtb-051aec150b9f5b4f8",
+            "rtb-0ac009b440bdaa5f3",
+            "rtb-0748f194be6bcff00",
+            "rtb-09352ff1dc200b07f",
+            "rtb-0ac6d6849e83f0c2e",
+            "rtb-0afc06a3a7a1bbe7e"
+          ]
+        },
+        "test_ng_api":{
+          "image": "806606111087.dkr.ecr.us-east-1.amazonaws.com/test-ng-api",
+          "SECRET_NAME": "test_ng_api",
+          "memory_limit_mib":2048,
+          "cpu":512
+        },
+        "test_ng_services_api":{
+          "image": "806606111087.dkr.ecr.us-east-1.amazonaws.com/test-ng-services-api",
+          "SECRET_NAME": "test_ng_services_api",
+          "memory_limit_mib":2048,
+          "cpu":512
+        },
+        "test_ng_admin_portal":{
+          "image": "806606111087.dkr.ecr.us-east-1.amazonaws.com/test-ng-admin",
+          "SECRET_NAME": "test_ng_admin",
+          "memory_limit_mib":4096,
+          "cpu":1024
+        },
+        "test_ng_admin_api":{
+          "image": "806606111087.dkr.ecr.us-east-1.amazonaws.com/test-ng-admin-api",
+          "SECRET_NAME": "test_ng_admin_api",
+          "memory_limit_mib":2048,
+          "cpu":512
+        },
+        "test_ng_portal_api":{
+          "image": "806606111087.dkr.ecr.us-east-1.amazonaws.com/test-ng-portal-api",
+          "SECRET_NAME": "test_ng_portal_api",
+          "memory_limit_mib":2048,
+          "cpu":512
+        },
+        "test_ng_notifications_api":{
+          "image": "806606111087.dkr.ecr.us-east-1.amazonaws.com/test-ng-notifications-api",
+          "SECRET_NAME": "test_ng_notifications_api",
+          "memory_limit_mib":2048,
+          "cpu":512
+        },
+        "test_ng_jpm_mock_api":{
+          "image": "806606111087.dkr.ecr.us-east-1.amazonaws.com/test-ng-jpm-mock-api",
+          "SECRET_NAME": "test_ng_jpm_mock_api",
+          "memory_limit_mib":2048,
+          "cpu":512
+        },
+        "ssh_tunnel_cidr": "10.1.2.221/32",
+        "capacity_provider_strategy": {
+          "capacity_provider": "FARGATE_SPOT",
+          "weight": 5,
+          "email_sns_endpoint": [
+            "xiao@test.com",
+            "devops@test.com"
+          ]
+        },
+        "documentdb": {
+          "engine_version": "5.0.0",
+          "maintenance_window": "sun:02:00-sun:03:00",
+          "number_of_instances": 1,
+          "instance_type": {
+            "instance_class" : "R6G",
+            "instance_size": "LARGE"
+          },
+          "parameters": {
+            "audit_logs": "ddl",
+            "change_stream_log_retention_duration": "604800",
+            "profiler": "disabled",
+            "profiler_sampling_rate": "1.0",
+            "profiler_threshold_ms": "100",
+            "tls": "enabled",
+            "ttl_monitor": "disabled"
+          }
+        },
+        "elasticache": {
+          "cache_parameter_group_family": "redis5.0",
+          "at_rest_encryption_enabled": true,
+          "automatic_failover_enabled": false,
+          "auto_minor_version_upgrade": true,
+          "cache_node_type": "cache.t3.micro",
+          "engine": "redis",
+          "engine_version": "5.0.5",
+          "num_node_groups": 1,
+          "replicas_per_node_group":  0,
+          "snapshot_window": "02:00-03:00",
+          "preferred_maintenance_window": "sun:05:00-sun:06:00",
+          "snapshot_retention_limit": 7
+        },
+        "test_app": {
+	        "alb_arn": "arn:aws:elasticloadbalancing:us-east-1:806606111087:loadbalancer/app/finex-ALBfi-EF7DKHL7N8X/e01a8013a3ac6d28",
+          "target_group": "arn:aws:elasticloadbalancing:us-east-1:806606111087:targetgroup/finex-tgfin-55GMZ274FAV4/b0cbc76b8accdb73",	
+          "image": "806606111087.dkr.ecr.us-east-1.amazonaws.com/test-app-ng",
+          "memory_limit_mib":2048,
+          "cpu":512
+        },
+        "ec2": {
+          "instance_type": "t2.micro",
+          "pem_key": "test-dev",
+          "ami_id": "ami-0191405ae14269ce4"
+        },
+        "event_rules": {
+          "invoice_file_movement" : {
+            "enabled": true,
+            "rate_limit": 10
+          },
+          "timing_monitor": {
+            "enabled": true,
+            "rate_limit": 10
+          },
+          "enrichment": {
+            "enabled": true,
+            "rate_limit": 60
+          },
+          "ingestion_jpm_cbm" : {
+            "enabled": true,
+            "rate_limit": 5
+          },
+          "disbursement-payments" : {
+            "enabled": true,
+            "timeout": 600
+          },
+          "compliance_timing_monitor": {
+            "enabled": true,
+            "rate_limit": 5
+          },
+          "reconciliation_end_of_day": {
+            "enabled": true,
+            "rate_limit": 1440,
+            "timeout": 900
+          }
+        },
+         "waf_acl":{
+          "countries_list": [
+            "AF",
+            "BY",
+            "CF",
+            "CG",
+            "CU",
+            "IR",
+            "IQ",
+            "KP",
+            "LB",
+            "LY",
+            "MM",
+            "NI",
+            "SO",
+            "SD",
+            "SY",
+            "VE",
+            "YE",
+            "ZW",
+            "RU"
+          ]
+        },
+        "lambdas":{
+          "timeout": 600,
+          "memory_size": 1024,
+          "email_sns_endpoint": ["xiao@test.com","devops@test.com"]
+        },
+        "stop_services":{
+          "enabled":true,
+          "cron": {
+            "hour":"3",
+            "minute":"0",
+            "month":"*",
+            "week_day":"7",
+            "year":"*"
+          }
+        },
+        "resume_services":{
+          "enabled": true,
+          "cron": {
+            "hour":"9",
+            "minute":"0",
+            "month":"*",
+            "week_day":"2",
+            "year":"*"
+          }
+        },
+        "dotnet_console_app_pipeline": {
+          "repo": "fx-ng",
+          "branch": "console-dev",
+          "cdk_version": "2.135.0",
+          "connection_arn": "arn:aws:codeconnections:us-east-1:806606111087:connection/ad300c4b-035c-4df2-bcd3-490220342cdd",
+          "sns_topic": "arn:aws:sns:us-east-1:806606111087:CodeStarNotifications-test-stacks-cicd-b3e9a00d4cb9ab7822144bbbdaa1964c5ef9cd04"
+        },
+		"codebuild": {
+			"test-ng": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"develop",
+			  "chatbot_topic":"test-stacks-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-1:806606111087:connection/e3ed6803-074a-4928-aff9-bb2c99992a08"
+			},
+			"test-ng-admin": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-admin"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"develop",
+			  "chatbot_topic":"test-stacks-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-1:806606111087:connection/e3ed6803-074a-4928-aff9-bb2c99992a08"
+			},
+			"test-ng-services-api": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-services-api"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"develop",
+			  "chatbot_topic":"test-stacks-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-1:806606111087:connection/e3ed6803-074a-4928-aff9-bb2c99992a08"
+			},
+			"test-ng-portal": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-portal"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"develop",
+			  "chatbot_topic":"test-stacks-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-1:806606111087:connection/e3ed6803-074a-4928-aff9-bb2c99992a08"
+			},
+			"test-ng-ingestion": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-lambdas-ingestion"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"develop",
+			  "chatbot_topic":"test-stacks-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-1:806606111087:connection/e3ed6803-074a-4928-aff9-bb2c99992a08"
+			},
+			"test-ng-funding": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-lambdas-funding"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"develop",
+			  "chatbot_topic":"test-stacks-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-1:806606111087:connection/e3ed6803-074a-4928-aff9-bb2c99992a08"
+			},
+      "test-ng-enrichment": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-lambdas-enrichment"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"develop",
+			  "chatbot_topic":"test-stacks-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-1:806606111087:connection/e3ed6803-074a-4928-aff9-bb2c99992a08"
+			},
+			"test-ng-disbursement": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-lambdas-disbursement"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"develop",
+			  "chatbot_topic":"test-stacks-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-1:806606111087:connection/e3ed6803-074a-4928-aff9-bb2c99992a08"
+			},
+			"test-ng-notification": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-lambdas-notification"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"develop",
+			  "chatbot_topic":"test-stacks-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-1:806606111087:connection/e3ed6803-074a-4928-aff9-bb2c99992a08"
+			},
+			"test-ng-webhook": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-lambdas-webhook"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"develop",
+			  "chatbot_topic":"test-stacks-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-1:806606111087:connection/e3ed6803-074a-4928-aff9-bb2c99992a08"
+			},
+			"test-ng-compliance": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-lambdas-compliance"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"develop",
+			  "chatbot_topic":"test-stacks-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-1:806606111087:connection/e3ed6803-074a-4928-aff9-bb2c99992a08"
+			},
+			"test-ng-sequencing": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-lambdas-sequencing"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"develop",
+			  "chatbot_topic":"test-stacks-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-1:806606111087:connection/e3ed6803-074a-4928-aff9-bb2c99992a08"
+			},
+			"test-ng-correction": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-lambdas-correction"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"develop",
+			  "chatbot_topic":"test-stacks-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-1:806606111087:connection/e3ed6803-074a-4928-aff9-bb2c99992a08"
+			},
+			"test-ng-reconciliation": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-lambdas-reconciliation"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"develop",
+			  "chatbot_topic":"test-stacks-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-1:806606111087:connection/e3ed6803-074a-4928-aff9-bb2c99992a08"
+			}
+		},
+        "env_update_lambda":{
+          "timeout": 600,
+          "event_rules":{
+            "enabled": true
+          },
+          "secret_name" : "test_ng_services_api-kfzOzD"
+        },
+        "stop_start_services":{
+          "rds_cluster": [
+            "test-rdstesttestdev7f505d0b-1rt9pp9ht9d98"
+          ],
+          "docdb_cluster":"documentdb-5-test-ng-test-dev"
+        },
+        "oncall_addresses":[
+          "117.20.28.188/32",
+          "104.131.231.109/32"
+        ],
+        "lambda_power_tuning": {
+          "application_id": "arn:aws:serverlessrepo:us-east-1:451282441545:applications/aws-lambda-power-tuning",
+          "semantic_version": "4.3.4",
+          "lambda_resource": "*",
+          "power_values": "128,256,512,1024,1536,3008"
+        }
+      },
+    "test-stage": {
+        "id": "048857582481",
+        "region": "us-east-1",
+        "cidr": "10.21.0.0/16",
+        "vpc_id": "vpc-0ef824f5d31a3a92c",
+        "hostedZone": "test-stage.com",
+        "email": "devops@test.com",
+        "kmsKeyId": "mrk-afa969b3fc4e4715beaca847a326a18d",
+        "hostedZoneId": "Z0303212KRM9EVK78WR2",
+        "route53Role": "arn:aws:iam::330157172028:role/route53_cross_account",
+        "wildcard_acm_arn": "arn:aws:acm:us-east-1:048857582481:certificate/8ef87afd-705d-4777-a2b5-c4e3cecf6141",
+        "peering_connection_ids": {
+          "demo_stage_peering_id": "pcx-0d10db5e5e672a4e6",
+          "demo_legacy_stage_peering_id": "pcx-0323c562ab92e3e34",
+          "sandbox_stage_peering_id": "pcx-05e64d758deb1db85",
+          "sandbox_legacy_stage_peering_id": "pcx-0acd986a4ce57a374"
+        },
+        "cross_account_peering":{
+          "cross_account_ids": [
+            "329042822701",
+            "655096806720"
+          ],
+          "cross_account_vpc_cidr":[
+            "10.81.0.0/16",
+            "10.91.0.0/16"
+          ]
+        },
+        "public_subnet_cidrs": [
+          "10.21.0.0/24",
+          "10.21.1.0/24",
+          "10.21.2.0/24"
+        ],
+        "private_subnet_cidrs": [
+          "10.21.3.0/24",
+          "10.21.4.0/24",
+          "10.21.5.0/24"
+        ],
+        "test_domains": ["*.test-stage.com"],
+        "route_table_ids":[
+          "rtb-0ea0e0f430a63c617",
+          "rtb-015441ca2b199b022",
+          "rtb-0487d7ebdd5980e7f",
+          "rtb-0ceae00008efac547",
+          "rtb-013b54b17eca04727",
+          "rtb-0561b36e20277395c"
+        ],
+        "dotnet_ec2":{
+          "sg_inbound_ip": [],
+          "instance_type": "t2.micro",
+          "pem_key": "test-stage",
+          "image_id": "ami-0c7217cdde317cfec",
+          "s3_arn": [
+            "codepipeline-us-east-1-385972715754",
+            "test-ng-test-stage-ng-048857582481",
+            "codepipeline-artifacts-bucket-test-codebuildtest-stage"
+          ],
+          "private_ip": "10.21.3.10"
+        },
+        "ecs_config":{
+          "desired_count": 1
+        },
+        "certificates": [
+          "arn:aws:acm:us-east-1:048857582481:certificate/8ef87afd-705d-4777-a2b5-c4e3cecf6141"
+        ],
+        "v1_stacks": {
+          "vpc_id": "vpc-071875b905e48e198",
+          "cidr": "10.2.0.0/16",
+          "legacy_route_table_ids": [
+            "rtb-088087be986a7f553",
+            "rtb-0a0a9a8b8e498fbd8",
+            "rtb-0c0f180ea4bad5686",
+            "rtb-089ff92e2081eabf9",
+            "rtb-0ef529e4bdd506d95",
+            "rtb-09d02947c0e76b2d2"
+          ]
+        },
+        "test_ng_api":{
+          "image": "048857582481.dkr.ecr.us-east-1.amazonaws.com/test-ng-api",
+          "SECRET_NAME": "test_ng_api",
+          "memory_limit_mib":2048,
+          "cpu":512
+        },
+        "test_ng_services_api":{
+          "image": "048857582481.dkr.ecr.us-east-1.amazonaws.com/test-ng-services-api",
+          "SECRET_NAME": "test_ng_services_api",
+          "memory_limit_mib":8192,
+          "cpu":2048
+        },
+        "test_ng_admin_portal":{
+          "image": "048857582481.dkr.ecr.us-east-1.amazonaws.com/test-ng-admin",
+          "SECRET_NAME": "test_ng_admin",
+          "memory_limit_mib":4096,
+          "cpu":1024
+        },
+        "test_ng_admin_api":{
+          "image": "048857582481.dkr.ecr.us-east-1.amazonaws.com/test-ng-admin-api",
+          "SECRET_NAME": "test_ng_admin_api",
+          "memory_limit_mib":2048,
+          "cpu":512
+        },
+        "test_ng_docusign_portal":{
+          "image": "048857582481.dkr.ecr.us-east-1.amazonaws.com/test-docusign-app",
+          "SECRET_NAME": "test_ng_docusign",
+          "memory_limit_mib":2048,
+          "cpu":512
+        },
+        "test_ng_docusign_api":{
+          "image": "048857582481.dkr.ecr.us-east-1.amazonaws.com/test-ng-docusign-api",
+          "SECRET_NAME": "test_ng_docusign_api",
+          "memory_limit_mib":2048,
+          "cpu":512
+        },
+        "test_ng_portal_api":{
+          "image": "048857582481.dkr.ecr.us-east-1.amazonaws.com/test-ng-portal-api",
+          "SECRET_NAME": "test_ng_portal_api",
+          "memory_limit_mib":2048,
+          "cpu":512
+        },
+        "test_ng_notifications_api":{
+          "image": "048857582481.dkr.ecr.us-east-1.amazonaws.com/test-ng-notifications-api",
+          "SECRET_NAME": "test_ng_notifications_api",
+          "memory_limit_mib":2048,
+          "cpu":512
+        },
+        "test_ng_jpm_mock_api":{
+          "image": "048857582481.dkr.ecr.us-east-1.amazonaws.com/test-ng-jpm-mock-api",
+          "SECRET_NAME": "test_ng_jpm_mock_api",
+          "memory_limit_mib":2048,
+          "cpu":512
+        },
+        "ssh_tunnel_cidr": "10.2.0.227/32",
+        "capacity_provider_strategy": {
+          "capacity_provider": "FARGATE_SPOT",
+          "weight": 5,
+          "email_sns_endpoint": [
+            "xiao@test.com",
+            "devops@test.com"
+          ]
+        },
+        "documentdb": {
+          "engine_version": "4.0.0",
+          "maintenance_window": "sun:02:00-sun:03:00",
+          "number_of_instances": 1,
+          "instance_type": {
+            "instance_class" : "R6G",
+            "instance_size": "XLARGE"
+          },
+          "parameters": {
+            "audit_logs": "ddl",
+            "change_stream_log_retention_duration": "604800",
+            "profiler": "disabled",
+            "profiler_sampling_rate": "1.0",
+            "profiler_threshold_ms": "100",
+            "tls": "enabled",
+            "ttl_monitor": "disabled"
+          }
+        },
+        "elasticache": {
+          "cache_parameter_group_family": "redis5.0",
+          "at_rest_encryption_enabled": true,
+          "automatic_failover_enabled": false,
+          "auto_minor_version_upgrade": true,
+          "cache_node_type": "cache.t3.micro",
+          "engine": "redis",
+          "engine_version": "5.0.5",
+          "num_node_groups": 1,
+          "replicas_per_node_group":  0,
+          "snapshot_window": "02:00-03:00",
+          "preferred_maintenance_window": "sun:05:00-sun:06:00",
+          "snapshot_retention_limit": 7
+        },
+        "test_app": {
+          "alb_arn": "arn:aws:elasticloadbalancing:us-east-1:048857582481:loadbalancer/app/finex-ALBfi-E66KUP16JO5Y/d4558059ae1d6584",
+          "target_group": "arn:aws:elasticloadbalancing:us-east-1:048857582481:targetgroup/finexi-tgfin-NKSOFGM0YOWN/9c3b1502de7b8769",
+          "image": "048857582481.dkr.ecr.us-east-1.amazonaws.com/test-app-ng",
+          "memory_limit_mib":2048,
+          "cpu":512
+        },
+        "ec2": {
+          "instance_type": "t2.micro",
+          "pem_key": "test-stage"
+        },
+        "event_rules": {
+          "invoice_file_movement" : {
+            "enabled": true,
+            "rate_limit": 10
+          },
+          "timing_monitor": {
+            "enabled": true,
+            "rate_limit": 10
+          },
+          "enrichment": {
+            "enabled": true,
+            "rate_limit": 60
+          },
+          "ingestion_jpm_cbm" : {
+            "enabled": true,
+            "rate_limit": 5
+          },
+          "disbursement-payments" : {
+            "enabled": true,
+            "timeout": 600
+          },
+          "compliance_timing_monitor": {
+            "enabled": true,
+            "rate_limit": 5
+          },
+          "reconciliation_end_of_day": {
+            "enabled": true,
+            "rate_limit": 1440,
+            "timeout": 900
+          }
+        },
+         "waf_acl":{
+          "countries_list": [
+            "AF",
+            "BY",
+            "CF",
+            "CG",
+            "CU",
+            "IR",
+            "IQ",
+            "KP",
+            "LB",
+            "LY",
+            "MM",
+            "NI",
+            "SO",
+            "SD",
+            "SY",
+            "VE",
+            "YE",
+            "ZW",
+            "RU"
+          ]
+        },
+        "lambdas":{
+          "timeout": 600,
+          "memory_size": 1024,
+          "email_sns_endpoint": ["xiao@test.com","devops@test.com"]
+        },
+        "dotnet_console_app_pipeline": {
+          "repo": "fx-ng",
+          "branch": "console-stage",
+          "cdk_version": "2.135.0",
+          "connection_arn": "arn:aws:codeconnections:us-east-1:048857582481:connection/d3a06d5d-2f43-4e74-9c8c-e0d050f041e6",
+          "sns_topic": "arn:aws:sns:us-west-2:048857582481:CodeStarNotifications-test-stacks-cicd-62ed3fc864707370e5ecb6bbb8971648808be79b"
+        },
+		"codebuild": {
+			"test-ng": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"stage",
+			  "chatbot_topic":"test-stacks-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-1:048857582481:connection/a8683f77-06b9-433f-b994-957513c592a2"
+			},
+			"test-ng-admin": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-admin"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"stage",
+			  "chatbot_topic":"test-stacks-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-1:048857582481:connection/a8683f77-06b9-433f-b994-957513c592a2"
+			},
+			"test-ng-services-api": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-services-api"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"stage",
+			  "chatbot_topic":"test-stacks-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-1:048857582481:connection/a8683f77-06b9-433f-b994-957513c592a2"
+			},
+			"test-ng-portal": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-portal"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"stage",
+			  "chatbot_topic":"test-stacks-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-1:048857582481:connection/a8683f77-06b9-433f-b994-957513c592a2"
+			},
+			"test-ng-ingestion": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-lambdas-ingestion"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"stage",
+			  "chatbot_topic":"test-stacks-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-1:048857582481:connection/a8683f77-06b9-433f-b994-957513c592a2"
+			},
+			"test-ng-funding": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-lambdas-funding"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"stage",
+			  "chatbot_topic":"test-stacks-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-1:048857582481:connection/a8683f77-06b9-433f-b994-957513c592a2"
+			},
+      "test-ng-enrichment": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-lambdas-funding"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"stage",
+			  "chatbot_topic":"test-stacks-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-1:048857582481:connection/a8683f77-06b9-433f-b994-957513c592a2"
+			},
+			"test-ng-disbursement": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-lambdas-disbursement"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"stage",
+			  "chatbot_topic":"test-stacks-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-1:048857582481:connection/a8683f77-06b9-433f-b994-957513c592a2"
+			},
+			"test-ng-notification": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-lambdas-notification"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"stage",
+			  "chatbot_topic":"test-stacks-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-1:048857582481:connection/a8683f77-06b9-433f-b994-957513c592a2"
+			},
+			"test-ng-webhook": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-lambdas-webhook"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"stage",
+			  "chatbot_topic":"test-stacks-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-1:048857582481:connection/a8683f77-06b9-433f-b994-957513c592a2"
+			},
+			"test-ng-compliance": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-lambdas-compliance"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"stage",
+			  "chatbot_topic":"test-stacks-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-1:048857582481:connection/a8683f77-06b9-433f-b994-957513c592a2"
+			},
+			"test-ng-sequencing": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-lambdas-sequencing"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"stage",
+			  "chatbot_topic":"test-stacks-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-1:048857582481:connection/a8683f77-06b9-433f-b994-957513c592a2"
+			},
+			"test-ng-correction": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-lambdas-correction"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"stage",
+			  "chatbot_topic":"test-stacks-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-1:048857582481:connection/a8683f77-06b9-433f-b994-957513c592a2"
+			},
+			"test-ng-reconciliation": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-lambdas-reconciliation"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"stage",
+			  "chatbot_topic":"test-stacks-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-1:048857582481:connection/a8683f77-06b9-433f-b994-957513c592a2"
+			}
+		},
+        "env_update_lambda":{
+          "timeout": 600,
+          "event_rules":{
+            "enabled": true
+          },
+          "secret_name" : "test_ng_services_api-Je7irH"
+        },
+        "stop_start_services":{
+          "rds_cluster": [
+            "test-rdstestteststage6f16f67e-1jg3ctepjoolj"
+          ],
+          "docdb_cluster":"documentdb-test-ng-test-stage"
+        },
+        "oncall_addresses":[
+          "117.20.28.188/32",
+          "104.131.231.109/32"
+        ],
+        "lambda_power_tuning": {
+          "application_id": "arn:aws:serverlessrepo:us-east-1:451282441545:applications/aws-lambda-power-tuning",
+          "semantic_version": "4.3.4",
+          "lambda_resource": "*",
+          "power_values": "128,256,512,1024,1536,3008"
+        }
+      },
+    "test-sandbox": {
+        "id": "655096806720",
+        "region": "us-east-1",
+        "cidr": "10.81.0.0/16",
+        "vpc_id": "vpc-074e0c306bc14e34e",
+        "hostedZone": "test-sandbox.com",
+        "email": "devops@test.com",
+        "kmsKeyId": "mrk-11de7f2877ea48d0966772b05467c6ea",
+        "hostedZoneId": "Z022295122NWI73EJ3XTA",
+        "route53Role": "arn:aws:iam::330157172028:role/route53_cross_account",
+        "wildcard_acm_arn": "arn:aws:acm:us-east-1:655096806720:certificate/e11c08e0-0d44-4621-9355-553ce91e5e5f",
+        "peering_connection_ids": {},
+        "cross_account_peering":{
+          "cross_account_ids": [],
+          "cross_account_vpc_cidr":[]
+        },
+        "public_subnet_cidrs": [
+          "10.81.0.0/24",
+          "10.81.1.0/24",
+          "10.81.2.0/24"
+        ],
+        "private_subnet_cidrs": [
+          "10.81.3.0/24",
+          "10.81.4.0/24",
+          "10.81.5.0/24"
+        ],
+        "test_domains": ["*.test-sandbox.com"],
+        "route_table_ids":[
+          "rtb-02b8bdf715020d3cf",
+          "rtb-075241c935aaadc17",
+          "rtb-0ad7181c5a2ed9e1b",
+          "rtb-04b55426e65dcd3c7",
+          "rtb-0b3544cc57a5d2e56",
+          "rtb-08828be71ff4fe448"
+
+        ],
+        "dotnet_ec2":{
+          "sg_inbound_ip": [],
+          "instance_type": "t2.micro",
+          "pem_key": "test-sandbox",
+          "image_id": "ami-0c7217cdde317cfec",
+          "s3_arn": [
+            "test-codepipeline-artifacts-bucket-test-sandbox",
+            "test-ng-test-sandbox-ng-655096806720"
+          ],
+          "private_ip": "10.81.3.10"
+        },
+        "ecs_config":{
+          "desired_count": 1
+        },
+        "ecr_repos": [
+          "test-compliance-aws",
+          "test-disbursement-aws",
+          "test-enrichment-aws",
+          "test-funding-aws",
+          "test-ingestion-aws",
+          "test-notifications-aws",
+          "test-reconciliation-aws",
+          "test-sequencing-aws",
+          "test-webhooks-aws",
+          "test-correction-aws"
+        ],
+        "certificates": [
+          "arn:aws:acm:us-east-1:655096806720:certificate/e11c08e0-0d44-4621-9355-553ce91e5e5f"
+        ],
+        "v1_stacks": {
+          "vpc_id": "",
+          "cidr": "10.8.0.0/16",
+          "legacy_route_table_ids":[]
+        },
+        "test_ng_api":{
+          "image": "655096806720.dkr.ecr.us-east-1.amazonaws.com/test-ng-api",
+          "SECRET_NAME": "test_ng_api",
+          "memory_limit_mib":2048,
+          "cpu":512
+        },
+        "test_ng_services_api":{
+          "image": "655096806720.dkr.ecr.us-east-1.amazonaws.com/test-ng-services-api",
+          "SECRET_NAME": "test_ng_services_api",
+          "memory_limit_mib":8192,
+          "cpu":2048
+        },
+        "test_ng_admin_portal":{
+          "image": "655096806720.dkr.ecr.us-east-1.amazonaws.com/test-ng-admin",
+          "SECRET_NAME": "test_ng_admin",
+          "memory_limit_mib":2048,
+          "cpu":512
+        },
+        "test_ng_admin_api":{
+          "image": "655096806720.dkr.ecr.us-east-1.amazonaws.com/test-ng-admin-api",
+          "SECRET_NAME": "test_ng_admin_api",
+          "memory_limit_mib":2048,
+          "cpu":512
+        },
+        "test_ng_portal_api":{
+          "image": "655096806720.dkr.ecr.us-east-1.amazonaws.com/test-ng-portal-api",
+          "SECRET_NAME": "test_ng_portal_api",
+          "memory_limit_mib":2048,
+          "cpu":512
+        },
+        "test_app": {
+	  "alb_arn": "arn:aws:elasticloadbalancing:us-east-1:655096806720:loadbalancer/app/finexi-ALBfi-uRivC0R6hvj9/ef454eae94842933",
+          "target_group": "arn:aws:elasticloadbalancing:us-east-1:655096806720:targetgroup/finexi-tgfin-5P0BSDELFQQD/292bec49a00aa08b",
+          "image": "655096806720.dkr.ecr.us-east-1.amazonaws.com/test-app-ng",
+          "memory_limit_mib":2048,
+          "cpu":512
+        },
+        "test_ng_notifications_api":{
+          "image": "655096806720.dkr.ecr.us-east-1.amazonaws.com/test-ng-notifications-api",
+          "SECRET_NAME": "test_ng_notifications_api",
+          "memory_limit_mib":2048,
+          "cpu":512
+        },
+        "test_ng_jpm_mock_api":{
+          "image": "655096806720.dkr.ecr.us-east-1.amazonaws.com/test-ng-jpm-mock-api",
+          "SECRET_NAME": "test_ng_jpm_mock_api",
+          "memory_limit_mib":2048,
+          "cpu":512
+        },
+        "ssh_tunnel_cidr": "0.0.0.0/0",
+        "capacity_provider_strategy": {
+          "capacity_provider": "FARGATE_SPOT",
+          "weight": 5,
+          "email_sns_endpoint": [
+            "xiao@test.com",
+            "devops@test.com"
+          ]
+        },
+        "ec2": {
+          "instance_type": "t2.micro",
+          "pem_key": "test-sandbox"
+        },
+        "event_rules": {
+          "invoice_file_movement" : {
+            "enabled": true,
+            "rate_limit": 10
+          },
+          "timing_monitor": {
+            "enabled": true,
+            "rate_limit": 10
+          },
+          "enrichment": {
+            "enabled": true,
+            "rate_limit": 60
+          },
+          "ingestion_jpm_cbm" : {
+            "enabled": true,
+            "rate_limit": 5
+          },
+          "disbursement-payments" : {
+            "enabled": true,
+            "timeout": 600
+          },
+          "compliance_timing_monitor": {
+            "enabled": true,
+            "rate_limit": 5
+          },
+          "reconciliation_end_of_day": {
+            "enabled": true,
+            "rate_limit": 1440,
+            "timeout": 900
+          }
+        },
+         "waf_acl":{
+          "countries_list": [
+            "AF",
+            "BY",
+            "CF",
+            "CG",
+            "CU",
+            "IR",
+            "IQ",
+            "KP",
+            "LB",
+            "LY",
+            "MM",
+            "NI",
+            "SO",
+            "SD",
+            "SY",
+            "VE",
+            "YE",
+            "ZW",
+            "RU"
+          ]
+        },
+        "lambdas":{
+          "timeout": 600,
+          "memory_size": 1024,
+          "email_sns_endpoint": ["xiao@test.com","devops@test.com"]
+        },
+        "dotnet_console_app_pipeline": {
+          "repo": "fx-ng",
+          "branch": "console-sandbox",
+          "cdk_version": "2.135.0",
+          "connection_arn": "",
+          "sns_topic": "arn:aws:sns:us-east-1:655096806720:CodeStarNotifications-slack-notification-engineering-cicd-e5dbbd7e701d789fba21c7f9b717124858050159"
+        },
+		"codebuild": {
+			"test-ng": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"sandbox",
+			  "chatbot_topic":"slack-notification-engineering-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-2:655096806720:connection/60ec1dc2-abda-4bd5-8f6f-4e1486ef7c20"
+			},
+			"test-ng-admin": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-admin"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"sandbox",
+			  "chatbot_topic":"slack-notification-engineering-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-2:655096806720:connection/60ec1dc2-abda-4bd5-8f6f-4e1486ef7c20"
+			},
+			"test-ng-services-api": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-services-api"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"sandbox",
+			  "chatbot_topic":"slack-notification-engineering-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-2:655096806720:connection/60ec1dc2-abda-4bd5-8f6f-4e1486ef7c20"
+			},
+			"test-ng-portal": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-portal"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"sandbox",
+			  "chatbot_topic":"slack-notification-engineering-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-2:655096806720:connection/60ec1dc2-abda-4bd5-8f6f-4e1486ef7c20"
+			},
+			"test-ng-ingestion": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-lambdas-ingestion"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"sandbox",
+			  "chatbot_topic":"slack-notification-engineering-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-2:655096806720:connection/60ec1dc2-abda-4bd5-8f6f-4e1486ef7c20"
+			},
+			"test-ng-funding": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-lambdas-funding"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"sandbox",
+			  "chatbot_topic":"slack-notification-engineering-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-2:655096806720:connection/60ec1dc2-abda-4bd5-8f6f-4e1486ef7c20"
+			},
+      "test-ng-enrichment": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-lambdas-funding"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"sandbox",
+			  "chatbot_topic":"slack-notification-engineering-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-2:655096806720:connection/60ec1dc2-abda-4bd5-8f6f-4e1486ef7c20"
+			},
+			"test-ng-disbursement": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-lambdas-disbursement"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"sandbox",
+			  "chatbot_topic":"slack-notification-engineering-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-2:655096806720:connection/60ec1dc2-abda-4bd5-8f6f-4e1486ef7c20"
+			},
+			"test-ng-notification": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-lambdas-notification"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"sandbox",
+			  "chatbot_topic":"slack-notification-engineering-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-2:655096806720:connection/60ec1dc2-abda-4bd5-8f6f-4e1486ef7c20"
+			},
+			"test-ng-webhook": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-lambdas-webhook"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"sandbox",
+			  "chatbot_topic":"slack-notification-engineering-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-2:655096806720:connection/60ec1dc2-abda-4bd5-8f6f-4e1486ef7c20"
+			},
+			"test-ng-compliance": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-lambdas-compliance"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"sandbox",
+			  "chatbot_topic":"slack-notification-engineering-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-2:655096806720:connection/60ec1dc2-abda-4bd5-8f6f-4e1486ef7c20"
+			},
+			"test-ng-sequencing": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-lambdas-sequencing"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"sandbox",
+			  "chatbot_topic":"slack-notification-engineering-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-2:655096806720:connection/60ec1dc2-abda-4bd5-8f6f-4e1486ef7c20"
+			},
+			"test-ng-correction": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-lambdas-correction"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"sandbox",
+			  "chatbot_topic":"slack-notification-engineering-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-2:655096806720:connection/60ec1dc2-abda-4bd5-8f6f-4e1486ef7c20"
+			},
+			"test-ng-reconciliation": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-lambdas-reconciliation"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"sandbox",
+			  "chatbot_topic":"slack-notification-engineering-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-2:655096806720:connection/60ec1dc2-abda-4bd5-8f6f-4e1486ef7c20"
+			}
+		},
+        "cloudfront": {
+          "platform_cname":"cdn-platform-static.test-sandbox.com",
+          "default_root_object": "test.html"
+        },
+        "env_update_lambda":{
+          "timeout": 600,
+          "event_rules":{
+            "enabled": true
+          },
+          "secret_name" : "test_ng_services_api-DFMtJq"
+        },
+        "stop_start_services":{
+          "rds_cluster": [
+            ""
+          ],
+          "docdb_cluster":""
+        },
+        "oncall_addresses":[
+          "117.20.28.188/32",
+          "104.131.231.109/32"
+        ],
+        "lambda_power_tuning": {
+          "application_id": "arn:aws:serverlessrepo:us-east-1:451282441545:applications/aws-lambda-power-tuning",
+          "semantic_version": "4.3.4",
+          "lambda_resource": "*",
+          "power_values": "128,256,512,1024,1536,3008"
+        }
+      },
+    "test-demo": {
+        "id": "329042822701",
+        "region": "us-east-1",
+        "cidr": "10.91.0.0/16",
+        "vpc_id": "vpc-0cc048dbfa096c333",
+        "hostedZone": "test-demo.com",
+        "email": "devops@test.com",
+        "kmsKeyId": "mrk-0e0f187765ab4daa965113a43954d745",
+        "hostedZoneId": "Z049143933JST7AYJA895",
+        "route53Role": "arn:aws:iam::330157172028:role/route53_cross_account",
+        "wildcard_acm_arn": "arn:aws:acm:us-east-1:329042822701:certificate/35a70052-a48a-41f0-b1ea-10c1b8c88f4a",
+        "peering_connection_ids": {},
+        "cross_account_peering":{
+          "cross_account_ids": [],
+          "cross_account_vpc_cidr":[]
+        },
+        "public_subnet_cidrs": [
+          "10.91.0.0/24",
+          "10.91.1.0/24",
+          "10.91.2.0/24"
+        ],
+        "private_subnet_cidrs": [
+          "10.91.3.0/24",
+          "10.91.4.0/24",
+          "10.91.5.0/24"
+        ],
+        "test_domains": ["*.test-demo.com"],
+        "route_table_ids": [
+          "rtb-0db528c76a3caaecd",
+          "rtb-03b12b230fa0c2355",
+          "rtb-052897f09bad28ddc",
+          "rtb-00f2d5db253b2780a",
+          "rtb-0fbc9a2c9031e537d",
+          "rtb-0073108355256dcad"
+        ],
+        "dotnet_ec2":{
+          "sg_inbound_ip": [],
+          "instance_type": "t2.micro",
+          "pem_key": "demo",
+          "image_id": "ami-0c7217cdde317cfec",
+          "s3_arn": [],
+          "private_ip": ""
+        },
+        "ecs_config":{
+          "desired_count": 1
+        },
+        "ecr_repos": [
+          "test-app-ng",
+          "test-ng-admin",
+          "test-ng-admin-api",
+          "test-ng-api",
+          "test-ng-notifications-api",
+          "test-ng-portal-api",
+          "test-ng-services-api",
+          "test-compliance-aws",
+          "test-disbursement-aws",
+          "test-enrichment-aws",
+          "test-funding-aws",
+          "test-ingestion-aws",
+          "test-notifications-aws",
+          "test-reconciliation-aws",
+          "test-sequencing-aws",
+          "test-webhooks-aws",
+          "test-correction-aws"
+        ],
+        "certificates": [
+          "arn:aws:acm:us-east-1:329042822701:certificate/35a70052-a48a-41f0-b1ea-10c1b8c88f4a"
+        ],
+        "v1_stacks": {
+          "vpc_id": "",
+          "cidr": "10.9.0.0/16",
+          "legacy_route_table_ids":[]
+        },
+        "test_ng_api":{
+          "image": "329042822701.dkr.ecr.us-east-1.amazonaws.com/test-ng-api",
+          "SECRET_NAME": "test_ng_api",
+          "memory_limit_mib":2048,
+          "cpu":512
+        },
+        "test_ng_services_api":{
+          "image": "329042822701.dkr.ecr.us-east-1.amazonaws.com/test-ng-services-api",
+          "SECRET_NAME": "test_ng_services_api",
+          "memory_limit_mib":8192,
+          "cpu":2048
+        },
+        "test_ng_admin_portal":{
+          "image": "329042822701.dkr.ecr.us-east-1.amazonaws.com/test-ng-admin",
+          "SECRET_NAME": "test_ng_admin",
+          "memory_limit_mib":2048,
+          "cpu":512
+        },
+        "test_ng_admin_api":{
+          "image": "329042822701.dkr.ecr.us-east-1.amazonaws.com/test-ng-admin-api",
+          "SECRET_NAME": "test_ng_admin_api",
+          "memory_limit_mib":2048,
+          "cpu":512
+        },
+        "test_ng_portal_api":{
+          "image": "329042822701.dkr.ecr.us-east-1.amazonaws.com/test-ng-portal-api",
+          "SECRET_NAME": "test_ng_portal_api",
+          "memory_limit_mib":2048,
+          "cpu":512
+        },
+        "test_app": {
+	        "alb_arn": "arn:aws:elasticloadbalancing:us-east-1:329042822701:loadbalancer/app/finexi-ALBfi-9yweFqwdDuLu/a3334f25299977d0",
+          "target_group": "arn:aws:elasticloadbalancing:us-east-1:329042822701:targetgroup/finexi-tgfin-IXJRUNYQMCMZ/cd98dbc840e9b41a",
+          "image": "329042822701.dkr.ecr.us-east-1.amazonaws.com/test-app-ng",
+          "memory_limit_mib":2048,
+          "cpu":512
+        },
+        "test_ng_notifications_api":{
+          "image": "329042822701.dkr.ecr.us-east-1.amazonaws.com/test-ng-notifications-api",
+          "SECRET_NAME": "test_ng_notifications_api",
+          "memory_limit_mib":2048,
+          "cpu":512
+        },
+        "test_ng_jpm_mock_api":{
+          "image": "329042822701.dkr.ecr.us-east-1.amazonaws.com/test-ng-jpm-mock-api",
+          "SECRET_NAME": "test_ng_jpm_mock_api",
+          "memory_limit_mib":2048,
+          "cpu":512
+        },
+        "ssh_tunnel_cidr": "0.0.0.0/0",
+        "capacity_provider_strategy": {
+          "capacity_provider": "FARGATE_SPOT",
+          "weight": 5,
+          "email_sns_endpoint": [
+            "xiao@test.com",
+            "devops@test.com"
+          ]
+        },
+        "ec2": {
+          "instance_type": "t2.micro",
+          "pem_key": "test-demo"
+        },
+        "event_rules": {
+          "invoice_file_movement" : {
+            "enabled": true,
+            "rate_limit": 10
+          },
+          "timing_monitor": {
+            "enabled": true,
+            "rate_limit": 10
+          },
+          "enrichment": {
+            "enabled": true,
+            "rate_limit": 60
+          },
+          "ingestion_jpm_cbm" : {
+            "enabled": true,
+            "rate_limit": 5
+          },
+          "disbursement-payments" : {
+            "enabled": true,
+            "timeout": 600
+          },
+          "compliance_timing_monitor": {
+            "enabled": true,
+            "rate_limit": 5
+          },
+          "reconciliation_end_of_day": {
+            "enabled": true,
+            "rate_limit": 1440,
+            "timeout": 900
+          }
+        },
+         "waf_acl":{
+          "countries_list": [
+            "AF",
+            "BY",
+            "CF",
+            "CG",
+            "CU",
+            "IR",
+            "IQ",
+            "KP",
+            "LB",
+            "LY",
+            "MM",
+            "NI",
+            "SO",
+            "SD",
+            "SY",
+            "VE",
+            "YE",
+            "ZW",
+            "RU"
+          ]
+        },
+        "lambdas":{
+          "timeout": 600,
+          "memory_size": 1024,
+          "email_sns_endpoint": ["xiao@test.com","devops@test.com"]
+        },
+        "dotnet_console_app_pipeline": {
+          "repo": "fx-ng",
+          "branch": "console-demo",
+          "cdk_version": "2.135.0",
+          "connection_arn": "",
+          "sns_topic": "arn:aws:sns:us-east-1:329042822701:CodeStarNotifications-slack-notification-engineering-cicd-0469fdf70c944fc74a326f511931844d59a30956"
+        },
+		"codebuild": {
+			"test-ng": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"demo",
+			  "chatbot_topic":"test-stacks-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-1:329042822701:connection/a8683f77-06b9-433f-b994-957513c592a2"
+			},
+			"test-ng-admin": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-admin"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"demo",
+			  "chatbot_topic":"test-stacks-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-1:329042822701:connection/a8683f77-06b9-433f-b994-957513c592a2"
+			},
+			"test-ng-services-api": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-services-api"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"demo",
+			  "chatbot_topic":"test-stacks-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-1:329042822701:connection/a8683f77-06b9-433f-b994-957513c592a2"
+			},
+			"test-ng-portal": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-portal"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"demo",
+			  "chatbot_topic":"test-stacks-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-1:329042822701:connection/a8683f77-06b9-433f-b994-957513c592a2"
+			},
+			"test-ng-ingestion": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-lambdas-ingestion"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"demo",
+			  "chatbot_topic":"test-stacks-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-1:329042822701:connection/a8683f77-06b9-433f-b994-957513c592a2"
+			},
+			"test-ng-funding": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-lambdas-funding"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"demo",
+			  "chatbot_topic":"test-stacks-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-1:329042822701:connection/a8683f77-06b9-433f-b994-957513c592a2"
+			},
+      "test-ng-enrichment": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-lambdas-funding"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"demo",
+			  "chatbot_topic":"test-stacks-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-1:329042822701:connection/a8683f77-06b9-433f-b994-957513c592a2"
+			},
+			"test-ng-disbursement": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-lambdas-disbursement"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"demo",
+			  "chatbot_topic":"test-stacks-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-1:329042822701:connection/a8683f77-06b9-433f-b994-957513c592a2"
+			},
+			"test-ng-notification": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-lambdas-notification"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"demo",
+			  "chatbot_topic":"test-stacks-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-1:329042822701:connection/a8683f77-06b9-433f-b994-957513c592a2"
+			},
+			"test-ng-webhook": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-lambdas-webhook"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"demo",
+			  "chatbot_topic":"test-stacks-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-1:329042822701:connection/a8683f77-06b9-433f-b994-957513c592a2"
+			},
+			"test-ng-compliance": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-lambdas-compliance"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"demo",
+			  "chatbot_topic":"test-stacks-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-1:329042822701:connection/a8683f77-06b9-433f-b994-957513c592a2"
+			},
+			"test-ng-sequencing": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-lambdas-sequencing"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"demo",
+			  "chatbot_topic":"test-stacks-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-1:329042822701:connection/a8683f77-06b9-433f-b994-957513c592a2"
+			},
+			"test-ng-correction": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-lambdas-correction"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"demo",
+			  "chatbot_topic":"test-stacks-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-1:329042822701:connection/a8683f77-06b9-433f-b994-957513c592a2"
+			},
+			"test-ng-reconciliation": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-lambdas-reconciliation"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"demo",
+			  "chatbot_topic":"test-stacks-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-1:329042822701:connection/a8683f77-06b9-433f-b994-957513c592a2"
+			}
+		},
+        "cloudfront": {
+          "platform_cname":"cdn-platform-static.test-demo.com",
+          "default_root_object": "test.html"
+        },
+        "env_update_lambda":{
+          "timeout": 600,
+          "event_rules":{
+            "enabled": true
+          },
+          "secret_name" : "test_ng_services_api-QJ4ZXQ"
+        },
+        "stop_start_services":{
+          "rds_cluster": [
+            ""
+          ],
+          "docdb_cluster":""
+        },
+        "oncall_addresses":[
+          "117.20.28.188/32",
+          "104.131.231.109/32"
+        ],
+        "lambda_power_tuning": {
+          "application_id": "arn:aws:serverlessrepo:us-east-1:451282441545:applications/aws-lambda-power-tuning",
+          "semantic_version": "4.3.4",
+          "lambda_resource": "*",
+          "power_values": "128,256,512,1024,1536,3008"
+        }
+      },
+    "test-hotfix-dev": {
+        "id": "317659955577",
+        "region": "us-east-1",
+        "cidr": "10.101.0.0/16",
+        "vpc_id": "vpc-0d75b3eb1a31fd497",
+        "hostedZone": "test-hotfix-dev.com",
+        "email": "devops@test.com",
+        "kmsKeyId": "mrk-ba95401610d843abaaa86905a504952e",
+        "hostedZoneId": "Z10220503QIL55QXTGJ2H",
+        "route53Role": "arn:aws:iam::330157172028:role/route53_cross_account",
+        "wildcard_acm_arn": "",
+        "peering_connection_ids": {},
+        "cross_account_peering":{
+          "cross_account_ids": [],
+          "cross_account_vpc_cidr":[]
+        },
+        "public_subnet_cidrs": [
+          "10.101.0.0/24",
+          "10.101.1.0/24",
+          "10.101.2.0/24"
+        ],
+        "private_subnet_cidrs": [
+          "10.101.3.0/24",
+          "10.101.4.0/24",
+          "10.101.5.0/24"
+        ],
+        "test_domains": ["*.test-hotfix-dev.com"],
+        "route_table_ids":[],
+        "dotnet_ec2":{
+          "sg_inbound_ip": [],
+          "instance_type": "t2.micro",
+          "pem_key": "",
+          "image_id": "ami-0c7217cdde317cfec",
+          "s3_arn": [
+            "test-ng-test-hotfix-dev-ng-317659955577",
+            "codepipeline-us-east-1-707571020303",
+            "test-codepipeline-artifacts-bucket-test-hotfix-dev"
+          ],
+          "private_ip": "10.101.3.10"
+        },
+        "ecs_config":{
+          "desired_count": 1
+        },
+        "ecr_repos": [
+          "test-app-ng",
+          "test-ng-admin",
+          "test-ng-admin-api",
+          "test-ng-api",
+          "test-ng-jpm-mock-api",
+          "test-ng-notifications-api",
+          "test-ng-portal-api",
+          "test-ng-services-api",
+          "test-compliance-aws",
+          "test-disbursement-aws",
+          "test-enrichment-aws",
+          "test-funding-aws",
+          "test-ingestion-aws",
+          "test-notifications-aws",
+          "test-reconciliation-aws",
+          "test-sequencing-aws",
+          "test-webhooks-aws",
+          "test-correction-aws"
+        ],
+        "certificates": [
+          "arn:aws:acm:us-east-1:317659955577:certificate/9382cae5-a924-464e-ad38-f618ab6c5412"
+        ],
+        "v1_stacks": {
+          "vpc_id": "",
+          "cidr": "10.10.0.0/16"
+        },
+        "test_ng_api":{
+          "image": "317659955577.dkr.ecr.us-east-1.amazonaws.com/test-ng-api",
+          "SECRET_NAME": "test_ng_api",
+          "memory_limit_mib":2048,
+          "cpu":512
+        },
+        "test_ng_services_api":{
+          "image": "317659955577.dkr.ecr.us-east-1.amazonaws.com/test-ng-services-api",
+          "SECRET_NAME": "test_ng_services_api",
+          "memory_limit_mib":2048,
+          "cpu":512
+        },
+        "test_ng_admin_portal":{
+          "image": "317659955577.dkr.ecr.us-east-1.amazonaws.com/test-ng-admin",
+          "SECRET_NAME": "test_ng_admin",
+          "memory_limit_mib":2048,
+          "cpu":512
+        },
+        "test_ng_admin_api":{
+          "image": "317659955577.dkr.ecr.us-east-1.amazonaws.com/test-ng-admin-api",
+          "SECRET_NAME": "test_ng_admin_api",
+          "memory_limit_mib":2048,
+          "cpu":512
+        },
+        "test_ng_docusign_portal":{
+          "image": "317659955577.dkr.ecr.us-east-1.amazonaws.com/test-docusign-app",
+          "SECRET_NAME": "test_ng_docusign",
+          "memory_limit_mib":2048,
+          "cpu":512
+        },
+        "test_ng_docusign_api":{
+          "image": "317659955577.dkr.ecr.us-east-1.amazonaws.com/test-ng-docusign-api",
+          "SECRET_NAME": "test_ng_docusign_api",
+          "memory_limit_mib":2048,
+          "cpu":512
+        },
+        "test_ng_portal_api":{
+          "image": "317659955577.dkr.ecr.us-east-1.amazonaws.com/test-ng-portal-api",
+          "SECRET_NAME": "test_ng_portal_api",
+          "memory_limit_mib":2048,
+          "cpu":512
+        },
+        "test_ng_jpm_mock_api":{
+          "image": "317659955577.dkr.ecr.us-east-1.amazonaws.com/test-ng-jpm-mock-api",
+          "SECRET_NAME": "test_ng_jpm_mock_api",
+          "memory_limit_mib":2048,
+          "cpu":512
+        },
+        "test_app": {
+          "alb_arn": "arn:aws:elasticloadbalancing:us-east-1:317659955577:loadbalancer/app/finexi-ALBfi-cJgZVpK6xokw/48be17d8bbf8f7cf",
+          "target_group": "arn:aws:elasticloadbalancing:us-east-1:317659955577:targetgroup/finexi-tgfin-60Y6CFCXI3WQ/ee7fa70d49ff7087",
+          "image": "317659955577.dkr.ecr.us-east-1.amazonaws.com/test-app-ng",
+          "memory_limit_mib":2048,
+          "cpu":512
+        },
+        "test_ng_notifications_api":{
+          "image": "317659955577.dkr.ecr.us-east-1.amazonaws.com/test-ng-notifications-api",
+          "SECRET_NAME": "test_ng_notifications_api",
+          "memory_limit_mib":2048,
+          "cpu":512
+        },
+        "ssh_tunnel_cidr": "0.0.0.0/0",
+        "capacity_provider_strategy": {
+          "capacity_provider": "FARGATE_SPOT",
+          "weight": 5,
+          "email_sns_endpoint": [
+            "xiao@test.com",
+            "devops@test.com"
+          ]
+        },
+        "ec2": {
+          "instance_type": "t2.micro",
+          "pem_key": "test-hotfix-dev"
+        },
+        "event_rules": {
+          "invoice_file_movement" : {
+            "enabled": true,
+            "rate_limit": 10
+          },
+          "timing_monitor": {
+            "enabled": true,
+            "rate_limit": 10
+          },
+          "enrichment": {
+            "enabled": true,
+            "rate_limit": 60
+          },
+          "ingestion_jpm_cbm" : {
+            "enabled": true,
+            "rate_limit": 5
+          },
+          "disbursement-payments" : {
+            "enabled": true,
+            "timeout": 600
+          },
+          "compliance_timing_monitor": {
+            "enabled": true,
+            "rate_limit": 5
+          },
+          "reconciliation_end_of_day": {
+            "enabled": true,
+            "rate_limit": 1440,
+            "timeout": 900
+          }
+        },
+         "waf_acl":{
+          "countries_list": [
+            "AF",
+            "BY",
+            "CF",
+            "CG",
+            "CU",
+            "IR",
+            "IQ",
+            "KP",
+            "LB",
+            "LY",
+            "MM",
+            "NI",
+            "SO",
+            "SD",
+            "SY",
+            "VE",
+            "YE",
+            "ZW",
+            "RU"
+          ]
+        },
+        "lambdas":{
+          "timeout": 600,
+          "memory_size": 1024,
+          "email_sns_endpoint": ["xiao@test.com","devops@test.com"]
+        },
+        "stop_services":{
+          "enabled":true,
+          "cron": {
+            "hour":"3",
+            "minute":"0",
+            "month":"*",
+            "week_day":"7",
+            "year":"*"
+          }
+        },
+        "resume_services":{
+          "enabled": true,
+          "cron": {
+            "hour":"9",
+            "minute":"0",
+            "month":"*",
+            "week_day":"2",
+            "year":"*"
+          }
+        },
+        "dotnet_console_app_pipeline": {
+          "repo": "fx-ng",
+          "branch": "console-hotfix-dev",
+          "cdk_version": "2.135.0",
+          "connection_arn": "arn:aws:codeconnections:us-east-1:317659955577:connection/a2e7ea32-b8e0-49b6-92b2-0d6a47831fc8",
+          "sns_topic": "arn:aws:sns:us-east-1:317659955577:CodeStarNotifications-slack-notification-engineering-cicd-012079594f9e2787a2278b3c351ea9bbe38c4607"
+        },
+		"codebuild": {
+			"test-ng": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"hotfix-dev",
+			  "chatbot_topic":"test-stacks-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-1:317659955577:connection/a8683f77-06b9-433f-b994-957513c592a2"
+			},
+			"test-ng-admin": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-admin"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"hotfix-dev",
+			  "chatbot_topic":"test-stacks-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-1:317659955577:connection/a8683f77-06b9-433f-b994-957513c592a2"
+			},
+			"test-ng-services-api": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-services-api"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"hotfix-dev",
+			  "chatbot_topic":"test-stacks-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-1:317659955577:connection/a8683f77-06b9-433f-b994-957513c592a2"
+			},
+			"test-ng-portal": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-portal"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"hotfix-dev",
+			  "chatbot_topic":"test-stacks-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-1:317659955577:connection/a8683f77-06b9-433f-b994-957513c592a2"
+			},
+			"test-ng-ingestion": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-lambdas-ingestion"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"hotfix-dev",
+			  "chatbot_topic":"test-stacks-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-1:317659955577:connection/a8683f77-06b9-433f-b994-957513c592a2"
+			},
+			"test-ng-funding": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-lambdas-funding"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"hotfix-dev",
+			  "chatbot_topic":"test-stacks-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-1:317659955577:connection/a8683f77-06b9-433f-b994-957513c592a2"
+			},
+      "test-ng-enrichment": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-lambdas-funding"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"hotfix-dev",
+			  "chatbot_topic":"test-stacks-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-1:317659955577:connection/a8683f77-06b9-433f-b994-957513c592a2"
+			},
+			"test-ng-disbursement": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-lambdas-disbursement"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"hotfix-dev",
+			  "chatbot_topic":"test-stacks-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-1:317659955577:connection/a8683f77-06b9-433f-b994-957513c592a2"
+			},
+			"test-ng-notification": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-lambdas-notification"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"hotfix-dev",
+			  "chatbot_topic":"test-stacks-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-1:317659955577:connection/a8683f77-06b9-433f-b994-957513c592a2"
+			},
+			"test-ng-webhook": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-lambdas-webhook"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"hotfix-dev",
+			  "chatbot_topic":"test-stacks-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-1:317659955577:connection/a8683f77-06b9-433f-b994-957513c592a2"
+			},
+			"test-ng-compliance": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-lambdas-compliance"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"hotfix-dev",
+			  "chatbot_topic":"test-stacks-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-1:317659955577:connection/a8683f77-06b9-433f-b994-957513c592a2"
+			},
+			"test-ng-sequencing": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-lambdas-sequencing"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"hotfix-dev",
+			  "chatbot_topic":"test-stacks-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-1:317659955577:connection/a8683f77-06b9-433f-b994-957513c592a2"
+			},
+			"test-ng-correction": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-lambdas-correction"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"hotfix-dev",
+			  "chatbot_topic":"test-stacks-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-1:317659955577:connection/a8683f77-06b9-433f-b994-957513c592a2"
+			},
+			"test-ng-reconciliation": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-lambdas-reconciliation"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"hotfix-dev",
+			  "chatbot_topic":"test-stacks-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codestar-connections:us-east-1:317659955577:connection/a8683f77-06b9-433f-b994-957513c592a2"
+			}
+		},
+        "cloudfront": {
+          "platform_cname":"cdn-platform-static.test-hotfix-dev.com",
+          "default_root_object": "test.html"
+        },
+        "env_update_lambda":{
+          "timeout": 600,
+          "event_rules":{
+            "enabled": true
+          },
+          "secret_name" : "test_ng_services_api-wgq1vk"
+        },
+        "stop_start_services":{
+          "rds_cluster": [
+            ""
+          ],
+          "docdb_cluster":""
+        },
+        "oncall_addresses":[
+          "117.20.28.188/32",
+          "104.131.231.109/32"
+        ],
+        "lambda_power_tuning": {
+          "application_id": "arn:aws:serverlessrepo:us-east-1:451282441545:applications/aws-lambda-power-tuning",
+          "semantic_version": "4.3.4",
+          "lambda_resource": "*",
+          "power_values": "128,256,512,1024,1536,3008"
+        }
+      },
+    "test-qa-new": {
+        "id": "337635756458",
+        "region": "us-east-1",
+        "cidr": "10.71.0.0/16",
+        "vpc_id": "vpc-067e9f60361f5bd50",
+        "hostedZone": "test-qa.com",
+        "email": "devops@test.com",
+        "kmsKeyId": "mrk-4a713f7fc174425e8076502cbbee7f69",
+        "hostedZoneId": "Z00215643EZSG6Q6YXCV0",
+        "route53Role": "arn:aws:iam::330157172028:role/route53_cross_account",
+        "wildcard_acm_arn": "arn:aws:acm:us-east-1:337635756458:certificate/5cf61e37-5426-41ee-b6dc-d3a21cfe8ad9",
+        "peering_connection_ids": {},
+        "cross_account_peering":{
+          "cross_account_ids": [],
+          "cross_account_vpc_cidr":[]
+        },
+        "public_subnet_cidrs": [
+          "10.71.0.0/24",
+          "10.71.1.0/24",
+          "10.71.2.0/24"
+        ],
+        "private_subnet_cidrs": [
+          "10.71.3.0/24",
+          "10.71.4.0/24",
+          "10.71.5.0/24"
+        ],
+        "test_domains": ["*.test-qa.com"],
+        "route_table_ids":[],
+        "private_subnet_ids": [
+          "subnet-0af66551ba00d089c",
+          "subnet-09b1a7b9db271b261",
+          "subnet-064212bb54bdaf090"
+        ],
+        "dotnet_ec2":{
+          "sg_inbound_ip": [],
+          "instance_type": "t2.micro",
+          "pem_key": "test-qa",
+          "image_id": "ami-0c7217cdde317cfec",
+          "s3_arn": [
+            "test-ng-test-qa-new-ng-337635756458"
+          ],
+          "private_ip": "10.71.3.10"
+        },
+        "ecs_config":{
+          "desired_count": 1
+        },
+        "certificates": [
+          "arn:aws:acm:us-east-1:337635756458:certificate/5cf61e37-5426-41ee-b6dc-d3a21cfe8ad9"
+        ],
+        "v1_stacks": {
+          "vpc_id": "vpc-053a85d96fc328abb",
+          "cidr": "10.7.0.0/16",
+          "legacy_route_table_ids":[]
+        },
+        "test_ng_api":{
+          "image": "337635756458.dkr.ecr.us-east-1.amazonaws.com/test-ng-api",
+          "SECRET_NAME": "test_ng_api",
+          "memory_limit_mib":2048,
+          "cpu":512
+        },
+        "test_ng_services_api":{
+          "image": "337635756458.dkr.ecr.us-east-1.amazonaws.com/test-ng-services-api",
+          "SECRET_NAME": "test_ng_services_api",
+          "memory_limit_mib":2048,
+          "cpu":512
+        },
+        "test_ng_admin_portal":{
+          "image": "337635756458.dkr.ecr.us-east-1.amazonaws.com/test-ng-admin",
+          "SECRET_NAME": "test_ng_admin",
+          "memory_limit_mib":4096,
+          "cpu":1024
+        },
+        "test_ng_admin_api":{
+          "image": "337635756458.dkr.ecr.us-east-1.amazonaws.com/test-ng-admin-api",
+          "SECRET_NAME": "test_ng_admin_api",
+          "memory_limit_mib":2048,
+          "cpu":512
+        },
+        "test_ng_portal_api":{
+          "image": "337635756458.dkr.ecr.us-east-1.amazonaws.com/test-ng-portal-api",
+          "SECRET_NAME": "test_ng_portal_api",
+          "memory_limit_mib":2048,
+          "cpu":512
+        },
+        "test_ng_notifications_api":{
+          "image": "337635756458.dkr.ecr.us-east-1.amazonaws.com/test-ng-notifications-api",
+          "SECRET_NAME": "test_ng_notifications_api",
+          "memory_limit_mib":2048,
+          "cpu":512
+        },
+        "test_ng_jpm_mock_api":{
+          "image": "337635756458.dkr.ecr.us-east-1.amazonaws.com/test-ng-jpm-mock-api",
+          "SECRET_NAME": "test_ng_jpm_mock_api",
+          "memory_limit_mib":2048,
+          "cpu":512
+        },
+        "ssh_tunnel_cidr": "10.6.0.227/32",
+        "capacity_provider_strategy": {
+          "capacity_provider": "FARGATE_SPOT",
+          "weight": 5,
+          "email_sns_endpoint": [
+            "xiao@test.com",
+            "devops@test.com"
+          ]
+        },
+        "documentdb": {
+          "engine_version": "4.0.0",
+          "maintenance_window": "sun:02:00-sun:03:00",
+          "number_of_instances": 2,
+          "instance_type": {
+            "instance_class" : "T3",
+            "instance_size": "MEDIUM"
+          },
+          "parameters": {
+            "audit_logs": "ddl",
+            "change_stream_log_retention_duration": "604800",
+            "profiler": "disabled",
+            "profiler_sampling_rate": "1.0",
+            "profiler_threshold_ms": "100",
+            "tls": "enabled",
+            "ttl_monitor": "disabled"
+          },
+          "security_group": {
+            "docdb_sg_id": ["sg-0f678de777005ff29"]
+          }
+        },
+        "elasticache": {
+          "cache_parameter_group_family": "redis5.0",
+          "at_rest_encryption_enabled": true,
+          "automatic_failover_enabled": false,
+          "auto_minor_version_upgrade": true,
+          "cache_node_type": "cache.t3.micro",
+          "engine": "redis",
+          "engine_version": "5.0.5",
+          "num_node_groups": 1,
+          "replicas_per_node_group":  0,
+          "snapshot_window": "02:00-03:00",
+          "preferred_maintenance_window": "sun:05:00-sun:06:00",
+          "snapshot_retention_limit": 7
+        },
+        "test_app": {
+          "alb_arn": "arn:aws:elasticloadbalancing:us-east-1:337635756458:loadbalancer/app/finex-ALBfi-1OODVSQ1HVX8J/b4614f8ccdfbb0c4",
+          "target_group": "arn:aws:elasticloadbalancing:us-east-1:337635756458:targetgroup/finexi-tgfin-PHTUGNOTEFA2/7feb5cd23076a232",
+          "image": "337635756458.dkr.ecr.us-east-1.amazonaws.com/test-app-ng",
+          "memory_limit_mib":2048,
+          "cpu":512
+        },
+        "ec2": {
+          "instance_type": "t2.micro",
+          "pem_key": "test-qa"
+        },
+        "event_rules": {
+          "invoice_file_movement" : {
+            "enabled": true,
+            "rate_limit": 10
+          },
+          "timing_monitor": {
+            "enabled": true,
+            "rate_limit": 10
+          },
+          "enrichment": {
+            "enabled": true,
+            "rate_limit": 60
+          },
+          "ingestion_jpm_cbm" : {
+            "enabled": true,
+            "rate_limit": 5
+          },
+          "disbursement-payments" : {
+            "enabled": true,
+            "timeout": 600
+          },
+          "compliance_timing_monitor": {
+            "enabled": true,
+            "rate_limit": 5
+          },
+          "reconciliation_end_of_day": {
+            "enabled": true,
+            "rate_limit": 1440,
+            "timeout": 900
+          }
+        },
+         "waf_acl":{
+          "countries_list": [
+            "AF",
+            "BY",
+            "CF",
+            "CG",
+            "CU",
+            "IR",
+            "IQ",
+            "KP",
+            "LB",
+            "LY",
+            "MM",
+            "NI",
+            "SO",
+            "SD",
+            "SY",
+            "VE",
+            "YE",
+            "ZW",
+            "RU"
+          ]
+        },
+        "lambdas":{
+          "timeout": 600,
+          "memory_size": 1024,
+          "email_sns_endpoint": ["xiao@test.com","devops@test.com"]
+        },
+        "dotnet_console_app_pipeline": {
+          "repo": "fx-ng",
+          "branch": "console-qa",
+          "cdk_version": "2.135.0",
+          "connection_arn": "arn:aws:codeconnections:us-east-1:337635756458:connection/9074fbcd-9e1b-426f-bca2-72e4d2541bc2",
+          "sns_topic": "arn:aws:sns:us-east-1:337635756458:CodeStarNotifications-slack-notification-engineer-cicd-c7eb60e577e205370bc6e11377d5c5e51e4a1d23"
+        },
+		"codebuild": {
+			"test-ng": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"qa",
+			  "chatbot_topic":"slack-notification-engineer-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codeconnections:us-east-1:337635756458:connection/9074fbcd-9e1b-426f-bca2-72e4d2541bc2"
+			},
+			"test-ng-admin": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-admin"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"qa",
+			  "chatbot_topic":"slack-notification-engineer-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codeconnections:us-east-1:337635756458:connection/9074fbcd-9e1b-426f-bca2-72e4d2541bc2"
+			},
+			"test-ng-services-api": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-services-api"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"qa",
+			  "chatbot_topic":"slack-notification-engineer-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codeconnections:us-east-1:337635756458:connection/9074fbcd-9e1b-426f-bca2-72e4d2541bc2"
+			},
+			"test-ng-portal": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-portal"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"qa",
+			  "chatbot_topic":"slack-notification-engineer-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codeconnections:us-east-1:337635756458:connection/9074fbcd-9e1b-426f-bca2-72e4d2541bc2"
+			},
+			"test-ng-ingestion": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-lambdas-ingestion"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"qa",
+			  "chatbot_topic":"slack-notification-engineer-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codeconnections:us-east-1:337635756458:connection/9074fbcd-9e1b-426f-bca2-72e4d2541bc2"
+			},
+			"test-ng-funding": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-lambdas-funding"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"qa",
+			  "chatbot_topic":"slack-notification-engineer-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codeconnections:us-east-1:337635756458:connection/9074fbcd-9e1b-426f-bca2-72e4d2541bc2"
+			},
+      "test-ng-enrichment": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-lambdas-enrichment"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"qa",
+			  "chatbot_topic":"slack-notification-engineer-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codeconnections:us-east-1:337635756458:connection/9074fbcd-9e1b-426f-bca2-72e4d2541bc2"
+			},
+			"test-ng-disbursement": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-lambdas-disbursement"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"qa",
+			  "chatbot_topic":"slack-notification-engineer-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codeconnections:us-east-1:337635756458:connection/9074fbcd-9e1b-426f-bca2-72e4d2541bc2"
+			},
+			"test-ng-notification": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-lambdas-notification"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"qa",
+			  "chatbot_topic":"slack-notification-engineer-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codeconnections:us-east-1:337635756458:connection/9074fbcd-9e1b-426f-bca2-72e4d2541bc2"
+			},
+			"test-ng-webhook": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-lambdas-webhook"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"qa",
+			  "chatbot_topic":"slack-notification-engineer-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codeconnections:us-east-1:337635756458:connection/9074fbcd-9e1b-426f-bca2-72e4d2541bc2"
+			},
+			"test-ng-compliance": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-lambdas-compliance"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"qa",
+			  "chatbot_topic":"slack-notification-engineer-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codeconnections:us-east-1:337635756458:connection/9074fbcd-9e1b-426f-bca2-72e4d2541bc2"
+			},
+			"test-ng-sequencing": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-lambdas-sequencing"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"qa",
+			  "chatbot_topic":"slack-notification-engineer-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codeconnections:us-east-1:337635756458:connection/9074fbcd-9e1b-426f-bca2-72e4d2541bc2"
+			},
+			"test-ng-correction": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-lambdas-correction"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"qa",
+			  "chatbot_topic":"slack-notification-engineer-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codeconnections:us-east-1:337635756458:connection/9074fbcd-9e1b-426f-bca2-72e4d2541bc2"
+			},
+      "test-ng-cardreloads": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-lambdas-cardreloads"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"qa",
+			  "chatbot_topic":"slack-notification-engineer-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codeconnections:us-east-1:337635756458:connection/9074fbcd-9e1b-426f-bca2-72e4d2541bc2"
+			},
+      "test-ng-reconciliation": {
+			  "organization": "testinc",
+			  "repo": "stacks-ng",
+			  "cdk_stack_name": [
+				"test-ng-lambdas-reconciliation"
+			  ],
+			  "cdk_version":"2.135.0",
+			  "github_branch":"qa",
+			  "chatbot_topic":"slack-notification-engineer-cicd",
+			  "timeout_duration":1.5,
+			  "codestar_connection_arn":"arn:aws:codeconnections:us-east-1:337635756458:connection/9074fbcd-9e1b-426f-bca2-72e4d2541bc2"
+			}
+		},
+        "env_update_lambda":{
+          "timeout": 600,
+          "event_rules":{
+            "enabled": true
+          },
+          "secret_name" : "test_ng_services_api-KifvbQ"
+        },
+        "stop_start_services":{
+          "rds_cluster": [
+            "test-rdstesttestqa2badd65a-4l7cawz5nrnp"
+          ],
+          "docdb_cluster":"documentdb-test-ng-test-qa"
+        },
+        "oncall_addresses":[
+          "117.20.28.188/32",
+          "104.131.231.109/32"
+        ],
+        "lambda_power_tuning": {
+          "application_id": "arn:aws:serverlessrepo:us-east-1:451282441545:applications/aws-lambda-power-tuning",
+          "semantic_version": "4.3.4",
+          "lambda_resource": "*",
+          "power_values": "128,256,512,1024,1536,3008"
+        }
+      },
+    "test-prod": {
+        "id": "509454863615",
+        "region": "us-east-1",
+        "cidr": "10.31.0.0/16",
+        "vpc_id": "vpc-069f8616dcea9c77d",
+        "hostedZone": "test.com",
+        "email": "devops@test.com",
+        "kmsKeyId": "mrk-a84c8aa426ec460a980aae76aa0314ac",
+        "hostedZoneId": "Z0602246HMFQ4VL3QN0W",
+        "route53Role": "arn:aws:iam::330157172028:role/route53_cross_account",
+        "wildcard_acm_arn": "arn:aws:acm:us-east-1:509454863615:certificate/ed614357-e420-49a1-a578-7c18363d5fb7",
+        "peering_connection_ids": {},
+        "cross_account_peering":{
+          "cross_account_ids": [],
+          "cross_account_vpc_cidr":[]
+        },
+        "public_subnet_cidrs": [
+          "10.31.0.0/24",
+          "10.31.1.0/24",
+          "10.31.2.0/24"
+        ],
+        "private_subnet_cidrs": [
+          "10.31.3.0/24",
+          "10.31.4.0/24",
+          "10.31.5.0/24"
+        ],
+        "test_domains": ["*.test.com"],
+        "route_table_ids":[],
+        "dotnet_ec2":{
+          "sg_inbound_ip": [],
+          "instance_type": "t2.micro",
+          "pem_key": "test-production-2021",
+          "image_id": "ami-0c7217cdde317cfec",
+          "cis_image_id": "ami-0cd6bed5677703650",
+          "s3_arn": [
+            "codepipeline-us-east-1-419534621091",
+            "test-ng-test-prod-ng-509454863615"
+          ],
+          "private_ip": "10.31.3.10"
+        },
+        "ecs_config":{
+          "desired_count": 1
+        },
+        "certificates": [
+          "arn:aws:acm:us-east-1:509454863615:certificate/ed614357-e420-49a1-a578-7c18363d5fb7"
+        ],
+        "v1_stacks": {
+          "vpc_id": "vpc-030f32a752e43c6a2",
+          "cidr": "10.3.0.0/16",
+          "legacy_route_table_ids":[]
+        },
+        "test_ng_api":{
+          "image": "509454863615.dkr.ecr.us-east-1.amazonaws.com/test-ng-api",
+          "SECRET_NAME": "test_ng_api",
+          "memory_limit_mib":2048,
+          "cpu":512
+        },
+        "test_ng_services_api":{
+          "image": "509454863615.dkr.ecr.us-east-1.amazonaws.com/test-ng-services-api",
+          "SECRET_NAME": "test_ng_services_api",
+          "memory_limit_mib":8192,
+          "cpu":2048
+        },
+        "test_ng_admin_portal":{
+          "image": "509454863615.dkr.ecr.us-east-1.amazonaws.com/test-ng-admin",
+          "SECRET_NAME": "test_ng_admin",
+          "memory_limit_mib":4096,
+          "cpu":1024
+        },
+        "test_ng_admin_api":{
+          "image": "509454863615.dkr.ecr.us-east-1.amazonaws.com/test-ng-admin-api",
+          "SECRET_NAME": "test_ng_admin_api",
+          "memory_limit_mib":2048,
+          "cpu":512
+        },
+        "test_ng_portal_api":{
+          "image": "509454863615.dkr.ecr.us-east-1.amazonaws.com/test-ng-portal-api",
+          "SECRET_NAME": "test_ng_portal_api",
+          "memory_limit_mib":2048,
+          "cpu":512
+        },
+        "test_ng_notifications_api":{
+          "image": "509454863615.dkr.ecr.us-east-1.amazonaws.com/test-ng-notifications-api",
+          "SECRET_NAME": "test_ng_notifications_api",
+          "memory_limit_mib":2048,
+          "cpu":512
+        },
+        "ssh_tunnel_cidr": "10.3.0.227/32",
+        "capacity_provider_strategy": {
+          "capacity_provider": "",
+          "weight": 5,
+          "email_sns_endpoint": []
+        },
+        "documentdb": {
+          "engine_version": "4.0.0",
+          "maintenance_window": "sun:02:00-sun:03:00",
+          "number_of_instances": 2,
+          "instance_type": {
+            "instance_class" : "R5",
+            "instance_size": "XLARGE2"
+          },
+          "parameters": {
+            "audit_logs": "ddl",
+            "change_stream_log_retention_duration": "604800",
+            "profiler": "disabled",
+            "profiler_sampling_rate": "1.0",
+            "profiler_threshold_ms": "100",
+            "tls": "enabled",
+            "ttl_monitor": "disabled"
+          }
+        },
+        "elasticache": {
+          "cache_parameter_group_family": "redis5.0",
+          "at_rest_encryption_enabled": true,
+          "automatic_failover_enabled": false,
+          "auto_minor_version_upgrade": true,
+          "cache_node_type": "cache.t3.small",
+          "engine": "redis",
+          "engine_version": "5.0.5",
+          "num_node_groups": 1,
+          "replicas_per_node_group":  0,
+          "snapshot_window": "02:00-03:00",
+          "preferred_maintenance_window": "sun:05:00-sun:06:00",
+          "snapshot_retention_limit": 7
+        },
+        "test_app": {
+	        "alb_arn": "arn:aws:elasticloadbalancing:us-east-1:509454863615:loadbalancer/app/finex-ALBfi-1N3BKN1W1FBGE/d41d7433be96ccb6",
+          "target_group": "arn:aws:elasticloadbalancing:us-east-1:509454863615:targetgroup/finexi-tgfin-HXWLKJ6XDRAS/c401a74b8fb7e127",	
+          "image": "509454863615.dkr.ecr.us-east-1.amazonaws.com/test-app-ng",
+          "memory_limit_mib":2048,
+          "cpu":512
+        },
+        "ec2": {
+          "instance_type": "t2.small",
+          "pem_key": "test-production-2021",
+          "ami_id": "ami-0191405ae14269ce4"
+        },
+        "event_rules": {
+          "invoice_file_movement" : {
+            "enabled": true,
+            "rate_limit": 10
+          },
+          "timing_monitor": {
+            "enabled": true,
+            "rate_limit": 10
+          },
+          "enrichment": {
+            "enabled": true,
+            "rate_limit": 60
+          },
+          "ingestion_jpm_cbm" : {
+            "enabled": true,
+            "rate_limit": 5
+          },
+          "disbursement-payments" : {
+            "enabled": true,
+            "timeout": 900
+          },
+          "compliance_timing_monitor": {
+            "enabled": true,
+            "rate_limit": 5
+          },
+          "reconciliation_end_of_day": {
+            "enabled": true,
+            "rate_limit": 1440,
+            "timeout": 900
+          }
+        },
+         "waf_acl":{
+          "countries_list": [
+            "AF",
+            "BY",
+            "CF",
+            "CG",
+            "CU",
+            "IR",
+            "IQ",
+            "KP",
+            "LB",
+            "LY",
+            "MM",
+            "NI",
+            "SO",
+            "SD",
+            "SY",
+            "VE",
+            "YE",
+            "ZW",
+            "RU"
+          ]
+        },
+        "dotnet_console_app_pipeline": {
+          "repo": "fx-ng",
+          "branch": "console-prod",
+          "cdk_version": "2.135.0",
+          "connection_arn": "arn:aws:codeconnections:us-east-1:509454863615:connection/7c6794f1-9949-42c1-94d8-5c17198dcb8c",
+          "sns_topic": "arn:aws:sns:us-east-1:806606111087:CodeStarNotifications-test-stacks-cicd-b3e9a00d4cb9ab7822144bbbdaa1964c5ef9cd04"
+        },
+        "lambdas":{
+          "timeout": 600,
+          "memory_size": 1024,
+          "email_sns_endpoint": ["xiao@test.com","devops@test.com"]
+        },
+        "env_update_lambda":{
+          "timeout": 600,
+          "event_rules":{
+            "enabled": true
+          },
+          "secret_name" : "test_ng_services_api-Rpj66i"
+        },
+        "stop_start_services":{
+          "rds_cluster": [
+            "test-rdstesttestprod1d7f4867-1m66a8it7i984",
+            "test-demodbtestprodb2edc88c-t89t7skncq4z"
+          ],
+          "docdb_cluster":"documentdb-test-ng-test-prod"
+        },
+        "oncall_addresses":[
+          "117.20.28.188/32",
+          "104.131.231.109/32",
+          "124.220.25.171/32",
+          "3.236.147.46/32",
+          "3.99.130.127/32"
+        ],
+        "backup_documentdb": {
+          "docdb_arn": "arn:aws:rds:us-east-1:509454863615:cluster:documentdb-test-ng-test-prod",
+          "cron_schedule_hourly": "cron(0 0-23 * * ? *)",
+          "cron_schedule_daily":  "cron(0 0 * * ? *)",
+          "cron_schedule_weekly":  "cron(0 0 ? * SUN *)",
+          "cron_schedule_monthly":  "cron(0 10 1 * ? *)",
+          "cron_schedule_yearly":  "cron(0 10 1 1 ? *)",
+          "hourly_rule_retention_days": "01",
+          "daily_rule_retention_days": "07",
+          "weekly_rule_retention_days": "28",
+          "monthly_rule_retention_days": "365",
+          "yearly_rule_cold_storage_days": "1",
+          "monthly_rule_cold_storage_days": "180"
+        },
+        "lambda_power_tuning": {
+          "application_id": "arn:aws:serverlessrepo:us-east-1:451282441545:applications/aws-lambda-power-tuning",
+          "semantic_version": "4.3.4",
+          "lambda_resource": "*",
+          "power_values": "128,256,512,1024,1536,3008"
+        }
+      },
+    "test-prod-secondary": {
+        "id": "509454863615",
+        "region": "us-west-2",
+        "cidr": "10.41.0.0/16",
+        "vpc_id": "",
+        "hostedZone": "test.com",
+        "email": "devops@test.com",
+        "kmsKeyId": "mrk-a84c8aa426ec460a980aae76aa0314ac",
+        "hostedZoneId": "",
+        "route53Role": "",
+        "wildcard_acm_arn": "arn:aws:acm:us-west-2:509454863615:certificate/68d39144-1db7-44d2-9464-1c57cd6627f0",
+        "peering_connection_ids": {},
+        "cross_account_peering":{
+          "cross_account_ids": [],
+          "cross_account_vpc_cidr":[]
+        },
+        "public_subnet_cidrs": [
+          "10.41.0.0/24",
+          "10.41.1.0/24",
+          "10.41.2.0/24"
+        ],
+        "private_subnet_cidrs": [
+          "10.41.3.0/16",
+          "10.41.4.0/16",
+          "10.41.5.0/16"
+        ],
+        "test_domains": [],
+        "route_table_ids":[],
+        "dotnet_ec2":{
+          "sg_inbound_ip": [],
+          "instance_type": "t2.micro",
+          "pem_key": "",
+          "image_id": "ami-008fe2fc65df48dac",
+          "s3_arn": [],
+          "private_ip": ""
+        },
+        "ecs_config":{
+          "desired_count": 1
+        },
+        "certificates": [
+          "arn:aws:acm:us-west-2:509454863615:certificate/68d39144-1db7-44d2-9464-1c57cd6627f0"
+        ],
+        "v1_stacks": {
+          "vpc_id": "vpc-0754714ff1f122a4a",
+          "cidr": "10.4.0.0/16",
+          "legacy_route_table_ids":[]
+        },
+        "test_ng_api":{
+          "image": "",
+          "SECRET_NAME": "test_ng_api",
+          "memory_limit_mib":2048,
+          "cpu":512
+        },
+        "test_ng_services_api":{
+          "image": "",
+          "SECRET_NAME": "test_ng_services_api",
+          "memory_limit_mib":8192,
+          "cpu":2048
+        },
+        "test_ng_admin_portal":{
+          "image": "",
+          "SECRET_NAME": "test_ng_admin",
+          "memory_limit_mib":4096,
+          "cpu":1024
+        },
+        "test_ng_admin_api":{
+          "image": "",
+          "SECRET_NAME": "test_ng_admin_api",
+          "memory_limit_mib":2048,
+          "cpu":512
+        },
+        "test_ng_portal_api":{
+          "image": "",
+          "SECRET_NAME": "test_ng_portal_api",
+          "memory_limit_mib":2048,
+          "cpu":512
+        },
+        "test_ng_notifications_api":{
+          "image": "",
+          "SECRET_NAME": "test_ng_notifications_api",
+          "memory_limit_mib":2048,
+          "cpu":512
+        },
+        "ssh_tunnel_cidr": "10.41.2.170/32",
+        "capacity_provider_strategy": {
+          "capacity_provider": "FARGATE_SPOT",
+          "weight": 5,
+          "email_sns_endpoint": [
+            "xiao@test.com",
+            "devops@test.com"
+          ]
+        },
+        "documentdb": {
+          "engine_version": "4.0.0",
+          "maintenance_window": "sun:02:00-sun:03:00",
+          "number_of_instances": 1,
+          "instance_type": {
+            "instance_class" : "R5",
+            "instance_size": "LARGE"
+          },
+          "parameters": {
+            "audit_logs": "ddl",
+            "change_stream_log_retention_duration": "604800",
+            "profiler": "disabled",
+            "profiler_sampling_rate": "1.0",
+            "profiler_threshold_ms": "100",
+            "tls": "enabled",
+            "ttl_monitor": "disabled"
+          }
+        },
+        "elasticache": {
+          "cache_parameter_group_family": "redis5.0",
+          "at_rest_encryption_enabled": true,
+          "automatic_failover_enabled": false,
+          "auto_minor_version_upgrade": true,
+          "cache_node_type": "cache.t3.small",
+          "engine": "redis",
+          "engine_version": "5.0.5",
+          "num_node_groups": 1,
+          "replicas_per_node_group":  0,
+          "snapshot_window": "02:00-03:00",
+          "preferred_maintenance_window": "sun:05:00-sun:06:00",
+          "snapshot_retention_limit": 7
+        },
+        "test_app": {
+          "image": "",
+          "memory_limit_mib":2048,
+          "cpu":512
+        },
+        "ec2": {
+          "instance_type": "t2.micro",
+          "pem_key": ""
+        },
+        "event_rules": {
+          "invoice_file_movement" : {
+            "enabled": true,
+            "rate_limit": 10
+          },
+          "timing_monitor": {
+            "enabled": true,
+            "rate_limit": 10
+          },
+          "enrichment": {
+            "enabled": true,
+            "rate_limit": 60
+          },
+          "ingestion_jpm_cbm" : {
+            "enabled": true,
+            "rate_limit": 5
+          },
+          "disbursement-payments" : {
+            "enabled": true,
+            "timeout": 600
+          },
+          "compliance_timing_monitor": {
+            "enabled": true,
+            "rate_limit": 5
+          }
+        },
+         "waf_acl":{
+          "countries_list": [
+            "AF",
+            "BY",
+            "CF",
+            "CG",
+            "CU",
+            "IR",
+            "IQ",
+            "KP",
+            "LB",
+            "LY",
+            "MM",
+            "NI",
+            "SO",
+            "SD",
+            "SY",
+            "VE",
+            "YE",
+            "ZW",
+            "RU"
+          ]
+        },
+        "lambdas":{
+          "timeout": 600,
+          "memory_size": 1024,
+          "email_sns_endpoint": ["xiao@test.com","devops@test.com"]
+        },
+        "env_update_lambda":{
+          "timeout": 600,
+          "event_rules":{
+            "enabled": true
+          },
+          "secret_name" : "test_ng_services_api-Rpj66i"
+        },
+        "stop_start_services":{
+          "rds_cluster": [
+            "test-replicatesttestprodsecondary-rgva6pb1dn3r",
+            "test-demodbtestprodb2edc88c-t89t7skncq4z"
+          ],
+          "docdb_cluster":"documentdb-test-ng-test-prod-secondary"
+        },
+        "oncall_addresses":[]
+      }
+  }
+}

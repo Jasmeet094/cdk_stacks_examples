@@ -1,0 +1,19 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      nodejs: 20
+      python: 3.8
+    commands:
+      - n 20 #for setting node version 20.x
+      - npm install -g npm
+      - npm install -g aws-cdk@$CDK_VERSION
+
+  build:
+    commands:
+      - python3 -m venv .venv
+      - . .venv/bin/activate
+      - pip install -r requirements.txt
+      - cdk list -c environment=$CDK_ENVIRONMENT
+      - cdk synth -c environment=$CDK_ENVIRONMENT $CDK_STACK_NAME #name of the stack to synthesize
+      - cdk deploy -c environment=$CDK_ENVIRONMENT $CDK_STACK_NAME --require-approval never

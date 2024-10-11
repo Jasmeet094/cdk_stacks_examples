@@ -1,0 +1,25 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 20
+      python: 3.8
+    commands:
+      - n 20 #for setting node version 20.x
+      - echo 'getting node version'
+      - node --version
+      - npm install -g npm
+      - npm install -g aws-cdk@2.135.0
+      - echo 'getting cdk version'
+      - cdk version
+      - echo 'getting python exact version'
+      - python --version
+
+  build:
+    commands:
+      - pip install -r requirements.txt
+      - cdk list -c environment=test-dev
+      - cdk list -c environment=test-stage
+      - cdk list -c environment=test-qa-new
+      - cdk list -c environment=test-prod
